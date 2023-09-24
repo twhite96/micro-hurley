@@ -2,7 +2,11 @@
 <html lang="{{ .Site.LanguageCode }}">
 
   <head>
-    <title>{{ .Title }} | {{ .Site.Title }}</title>
+    <title>
+      {{ block "title" . }}
+      {{ if .IsHome }} {{ .Site.Title }} {{ else }} {{ .Site.Title }} - {{ .Title }} {{ end }}
+      {{ end }}
+    </title>
     <link rel="me" href="https://micro.blog/ChrisHannah" />
     <meta name="pocket-site-verification" content="b9fdccdecc6f0b9e69b03cdebe20e7" />
     <meta name="google-site-verification" content="Chw2h37fUgKvTGRa3AZxs1MirZXhMELRSdC8UmrR_jM" />
@@ -14,6 +18,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="keywords" content="code,blog,programmer,developer,tech,story,essay,thought,web" />
+    <meta name="description" content="{{ .Summary }}">
 
     <!-- Style -->
     <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
@@ -22,12 +27,37 @@
     <script defer data-domain=" chrishannah.me" src="https://plausible.io/js/script.js">
     </script>
 
-    <meta name="theme-color" content="#ffee4e" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#ffee4e" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#b8ffec" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#b8ffec" media="(prefers-color-scheme: dark)">
     <meta name="p:domain_verify" content="cce9b0fd8aedc78145dfb114fcfe425e" />
     <link href="https://twitter.com/chrishannah" rel="me">
-    <link rel="webmention" href="https://webmention.io/chrishannah.me/webmention" />
-    <link rel="pingback" href="https://webmention.io/chrishannah.me/xmlrpc" />
+
+    <!-- RSS etc -->
+    {{- with .OutputFormats.Get "RSS" -}}
+    <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .RelPermalink }}" />
+    {{- with $.Site.Params.podcast_title }}
+    <link rel="alternate" type="application/rss+xml" title="{{ . }}" href="{{ "podcast.xml" | absURL }}" />
+    {{ else }}
+    <link rel="alternate" type="application/rss+xml" title="Podcast" href="{{ "podcast.xml" | absURL }}" />
+    {{ end -}}
+    <link rel="alternate" type="application/json" title="{{ $.Site.Title }}" href="{{ "feed.json" | absURL }}" />
+    <link rel="EditURI" type="application/rsd+xml" href="{{ "rsd.xml" | absURL }}" />
+    {{- end -}}
+
+    <link rel="me" href="https://micro.blog/{{ .Site.Author.username }}" />
+    <link rel="authorization_endpoint" href="https://micro.blog/indieauth/auth" />
+    <link rel="token_endpoint" href="https://micro.blog/indieauth/token" />
+    <link rel="micropub" href="https://micro.blog/micropub" />
+    <link rel="microsub" href="https://micro.blog/microsub" />
+    <link rel="webmention" href="https://micro.blog/webmention" />
+    <link rel="subscribe" href="https://micro.blog/users/follow" />
+    <link rel="canonical" href="{{ .Permalink }}">
+    {{ range .Site.Params.plugins_css }}
+    <link rel="stylesheet" href="{{ . }}" />
+    {{ end }}
+    {{ range $filename := .Site.Params.plugins_html }}
+    {{ partial $filename $ }}
+    {{ end }}
   </head>
 
   <body>
@@ -44,7 +74,7 @@
         </nav>
 
         <h1>
-          <a href="https://chrishannah.me">
+          <a href="https://micro.chrishannah.me">
             Chris Hannah
           </a>
         </h1>

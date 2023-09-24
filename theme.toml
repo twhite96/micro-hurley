@@ -1,8 +1,8 @@
-name = "Hurley"
+name = "Micro Hurley"
 license = "MIT"
 licenselink = ""
 description = "I'm Lost."
-homepage = "https://chrishannah.me"
+homepage = "https://micro.chrishannah.me"
 tags = []
 features = ["blog"]
 min_version = "0.18"
