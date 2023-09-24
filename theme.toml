@@ -1,0 +1,14 @@
+name = "Hurley"
+license = "MIT"
+licenselink = ""
+description = "I'm Lost."
+homepage = "https://chrishannah.me"
+tags = []
+features = ["blog"]
+min_version = "0.18"
+paginate = 10
+
+
+[author]
+  name = "Chris Hannah"
+  homepage = "https://chrishannah.me"

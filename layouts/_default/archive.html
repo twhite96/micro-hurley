@@ -1,0 +1,27 @@
+{{ partial "header.html" . }}
+
+<article class="">
+	<header>
+		<h1 id="title">
+			{{ .Title | markdownify }}
+		</h1>
+		{{ if (gt .Params.date 0) }}
+		<time>{{ .Date.Format "2 January 2006" }}</time>
+		{{ end }}
+	</header>
+
+	{{ .Content }}
+
+	{{ range (where .Site.RegularPages ".Params.hidden" "!=" "true").GroupByPublishDate "January 2006" }}
+	<h3>{{ .Key }}</h3>
+	<ul>
+
+		{{ range .Pages}}
+		<li><a href="{{.Permalink}}">{{.Title}}</a></li>
+		{{ end }}
+	</ul>
+	{{ end }}
+
+</article>
+
+{{ partial "footer.html" . }}

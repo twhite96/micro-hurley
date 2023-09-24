@@ -1,0 +1,21 @@
+</div>
+
+<footer class="footer">
+  {{ partial "foot_custom.html" . }}
+  <a href="https://twitter.com/chrishannah">Twitter</a> • <a href="http://instagram.com/lordchrishannah/">Instagram</a>
+  • <a href="mailto:me@chrishannah.me">Email</a> • <a rel="me" href="https://fosstodon.org/@chrishannah">Mastodon</a> • <a href="https://github.com/chrishannah">GitHub</a> 
+  </p>
+</footer>
+
+<script>
+  var codeHighlightingEnabled = document.getElementsByTagName('code').length != 0;
+  if (codeHighlightingEnabled) {
+    const script = document.createElement("script");
+    script.src = '{{ "js/highlight.js" | relURL }}';
+    script.async = false;
+    document.body.appendChild(script);
+  }
+</script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+{{ partial "header.html" . }}
+
+{{if not .IsHome }}
+<h1>{{ .Title | markdownify }}</h1>
+{{ end }}
+
+{{ .Content }}
+
+{{ range .Paginator.Pages	}}
+<article class="">
+  <header>
+    {{ if isset .Params "image"}}
+    <img src="{{ .Params.image }}" />
+    {{ end }}
+    <h1 id="title">
+      {{ .Title | markdownify }} <a href="{{ .RelPermalink }}">#</a>
+    </h1>
+    {{ if (gt .Params.date 0) }}
+    <time>{{ .Date.Format "2 January 2006" }}</time>
+    {{ end }}
+  </header>
+
+  {{ .Content }}
+</article>
+
+<hr />
+{{ end }}
+
+{{ partial "pagination.html" . }}
+
+{{ partial "footer.html" . }}

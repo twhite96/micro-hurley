@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="{{ .Site.LanguageCode }}">
+
+  <head>
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
+    <link rel="me" href="https://micro.blog/ChrisHannah" />
+    <meta name="pocket-site-verification" content="b9fdccdecc6f0b9e69b03cdebe20e7" />
+    <meta name="google-site-verification" content="Chw2h37fUgKvTGRa3AZxs1MirZXhMELRSdC8UmrR_jM" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="{{ "images/favicon.ico" | relURL }}">
+
+    <!-- General meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="code,blog,programmer,developer,tech,story,essay,thought,web" />
+
+    <!-- Style -->
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+
+    <!-- Plausible analytics -->
+    <script defer data-domain=" chrishannah.me" src="https://plausible.io/js/script.js">
+    </script>
+
+    <meta name="theme-color" content="#ffee4e" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#ffee4e" media="(prefers-color-scheme: dark)">
+    <meta name="p:domain_verify" content="cce9b0fd8aedc78145dfb114fcfe425e" />
+    <link href="https://twitter.com/chrishannah" rel="me">
+    <link rel="webmention" href="https://webmention.io/chrishannah.me/webmention" />
+    <link rel="pingback" href="https://webmention.io/chrishannah.me/xmlrpc" />
+  </head>
+
+  <body>
+
+    <header class="header">
+
+      <div id="header-content">
+        <nav id="navigation">
+          <ul class="menu">
+            {{ range .Site.Menus.main }}
+            <li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+            {{ end }}
+          </ul>
+        </nav>
+
+        <h1>
+          <a href="https://chrishannah.me">
+            Chris Hannah
+          </a>
+        </h1>
+      </div>
+
+    </header>
+    <div id="header-bg"></div>
+
+    <div id="posts">
